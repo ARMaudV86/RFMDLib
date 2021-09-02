@@ -107,7 +107,7 @@ void rfmSetCarrierFrequency(uint32_t frequency)
  * true  => enabling
  * false => disabling 
  * Current is rounded by 5mA inside RFM 
- * Current should be [0 to 15]
+ * uint8_t current should be [0 to 15]
  * current useless if OCP disabled
  * OCP Current : Imax(mA) = 45 + 5*current
  * 

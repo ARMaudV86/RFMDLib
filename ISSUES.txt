@@ -1,0 +1,1 @@
+Configuration MUST be sent 2 times for the RF module to work
