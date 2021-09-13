@@ -148,7 +148,7 @@ void rfmSetCarrierFrequency(uint32_t frequency)
  * true  => enabling
  * false => disabling 
  * Current is rounded by 5mA inside RFM 
- * uint8_t current should be [0 to 15]
+ * Current should be [0 to 15]
  * current useless if OCP disabled
  * OCP Current : Imax(mA) = 45 + 5*current
  * 
@@ -187,14 +187,14 @@ void rfmSetPower(int8_t powerLevel)
         spiWriteRegister(RFM69_REG_PA1_MODE, 0x55);
         spiWriteRegister(RFM69_REG_PA2_MODE, 0x70);  
     }
-    else if(-2 <= powerLevel && powerLevel < 2)
+    else if(-2 <= powerLevel && powerLevel <= 13)
     {
         powerLevel +=18;
         spiWriteRegister(RFM_69_REG_PA_LEVEL, 0x40 | (0x1F & powerLevel));
         spiWriteRegister(RFM69_REG_PA1_MODE, 0x55);
         spiWriteRegister(RFM69_REG_PA2_MODE, 0x70); 
     }
-    else if(2 <= powerLevel && powerLevel <= 17)
+    else if(13 < powerLevel && powerLevel <= 17)
     {
         powerLevel +=14;
         spiWriteRegister(RFM_69_REG_PA_LEVEL, 0x60 | (0x1F & powerLevel));
