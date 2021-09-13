@@ -6,7 +6,7 @@
 #include "rfm69_def.h"
 #include "spi_DIY.h"
 
-#define VERSION 1.2
+#define VERSION 1.3
 
 
 void rfmSetOPMode(uint8_t mode);
@@ -19,6 +19,7 @@ void rfmSetPower(int8_t powerLevel);
 
 uint8_t rmfGetOPMode();
 uint8_t rfmGetDataMode();
+
 
 
 
@@ -129,15 +130,17 @@ void rfmSetDeviation(uint32_t deviation)
  *
  * Set carrier frequency  "frequency" 
  * "frequency" is rounded by "SYNTHESIZER_STEP" steps
+ * Writing in Burst Mode, make this function 3 times faster 
+ * than writing each of the 3 carrier freq registers
  * 
  ****************************************/
 void rfmSetCarrierFrequency(uint32_t frequency)
 {
     frequency = round((float)frequency/(float)SYNTHESIZER_STEP);
+	uint8_t frequencyA[3] = {(uint8_t)(frequency >> 16), (uint8_t)(frequency >> 8), (uint8_t)frequency};
     
-    spiWriteRegister(RFM69_REG_CARR_FREQ_LSB, (uint8_t)frequency);
-    spiWriteRegister(RFM69_REG_CARR_FREQ_MID, (uint8_t)(frequency >> 8));
-    spiWriteRegister(RFM69_REG_CARR_FREQ_MSB, (uint8_t)(frequency >> 16)); 
+	spiBurstWriteRegister(RFM69_REG_CARR_FREQ_MSB, &frequencyA, 3);
+
 }
 
 
