@@ -6,7 +6,7 @@
 #include "rfm69_def.h"
 #include "spi_DIY.h"
 
-#define VERSION 1.1
+#define VERSION 1.2
 
 
 void rfmSetOPMode(uint8_t mode);
@@ -16,6 +16,11 @@ void rfmSetDeviation(uint32_t deviation);
 void rfmSetCarrierFrequency(uint32_t frequency);
 void rfmSetOCP(bool enable, uint8_t current);
 void rfmSetPower(int8_t powerLevel);
+
+uint8_t rmfGetOPMode();
+uint8_t rfmGetDataMode();
+
+
 
 /****************************************
  * void rfmSetOPMode(uint8_t mode);
@@ -38,6 +43,18 @@ void rfmSetOPMode(uint8_t mode)
 
 
 /****************************************
+ * uint8_t rfmGetOPMode();
+ *
+ * Get the rfm operating mode and return it as defined in rfm69_def*
+ * 
+ ****************************************/
+uint8_t rmfGetOPMode()
+{
+	return spiReadRegister(RFM69_REG_OP_MODE) & OP_MODE_MASK;
+}
+
+
+/****************************************
  * void rfmSetDataMode(uint8_t mode);
  *
  * Set transceiver data mode
@@ -51,6 +68,18 @@ void rfmSetDataMode(uint8_t dataMode)
 
 
 /****************************************
+ * uint8_t rfmGetDataMode();
+ *
+ * Get the rfm data mode and return it as defined in rfm69_def*
+ * 
+ ****************************************/
+uint8_t rfmGetDataMode()
+{
+	return spiReadRegister(RFM69_REG_DATA_MOD_MODE) & DATA_MODE_MASK;
+}
+
+
+/****************************************
  * void rfmSetModulation(uint8_t modulation);
  *
  * Set transceiver modulation type
@@ -60,6 +89,18 @@ void rfmSetDataMode(uint8_t dataMode)
 void rfmSetModulation(uint8_t modulation)
 {
     spiWriteRegister(RFM69_REG_DATA_MOD_MODE, (spiReadRegister(RFM69_REG_DATA_MOD_MODE) & MODULATION_MASK) | modulation); 
+}
+
+
+/****************************************
+ * uint8_t rfmSGetModulation();
+ *
+ * Get the rfm modulation mode and return it as defined in rfm69_def*
+ * 
+ ****************************************/
+uint8_t rfmGetModulation()
+{
+    return spiReadRegister(RFM69_REG_DATA_MOD_MODE) & MODULATION_MASK;
 }
 
 
