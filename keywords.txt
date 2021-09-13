@@ -13,21 +13,21 @@
 #######################################
 
 
-spiSet				KEYWORD2
-spiFrame8			KEYWORD2
-spiFrame			KEYWORD2
+spiSet					KEYWORD2
+spiFrame8				KEYWORD2
+spiFrame				KEYWORD2
 spiSegmentationStart	KEYWORD2
 spiSegmentationEnd		KEYWORD2
-spiWriteRegister	KEYWORD2
-spiReadRegister		KEYWORD2
+spiWriteRegister		KEYWORD2
+spiReadRegister			KEYWORD2
 
-rfmSetOPMode		KEYWORD2
-rfmSetDataMode		KEYWORD2
-rfmSetModulation	KEYWORD2
-rfmSetDeviation		KEYWORD2
+rfmSetOPMode			KEYWORD2
+rfmSetDataMode			KEYWORD2
+rfmSetModulation		KEYWORD2
+rfmSetDeviation			KEYWORD2
 rfmSetCarrierFrequency		KEYWORD2
-rfmSetOCP			KEYWORD2
-rfmSetPower			KEYWORD2
+rfmSetOCP				KEYWORD2
+rfmSetPower				KEYWORD2
 
 
 #######################################

@@ -1,0 +1,6 @@
+Run Configuration in SPI BURST
+
+RFDuino lib 
+	Adresses for I/Os
+	Call for I/Os interactions
+	HARDWARE INDEPENDANT !!!
