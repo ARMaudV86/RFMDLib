@@ -20,7 +20,8 @@ void rfmSetPower(int8_t powerLevel);
 uint8_t rmfGetOPMode();
 uint8_t rfmGetDataMode();
 
-
+// UNDER TEST:
+void rfmSetDeviationBurst(uint32_t deviation);
 
 
 /****************************************
@@ -111,6 +112,9 @@ uint8_t rfmGetModulation()
  * Set frequency deviation "deviation" 
  * "deviation" is rounded by "SYNTHESIZER_STEP" steps
  * Frequency deviation should be of at least 600Hz
+ *
+ * Writing in Burst Mode, make this function 2 times faster 
+ * than writing each of the 2 deviation freq registers
  * 
  ****************************************/
 void rfmSetDeviation(uint32_t deviation)
@@ -118,9 +122,9 @@ void rfmSetDeviation(uint32_t deviation)
     if(MIN_F_DEVIATION < deviation && deviation <= MAX_F_DEVIATION)
     {
         deviation = round((float)deviation/(float)SYNTHESIZER_STEP);
+		uint8_t deviationA[2] = {(uint8_t)(deviation >> 8), (uint8_t)deviation};
         
-        spiWriteRegister(RFM69_REG_FDEV_LSB, (uint8_t)deviation);
-        spiWriteRegister(RFM69_REG_FDEV_MSB, (uint8_t)(deviation >> 8)); 
+		spiBurstWriteRegister(RFM69_REG_FDEV_MSB, &deviationA, 2);
     }
 }
 
