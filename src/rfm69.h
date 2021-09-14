@@ -20,8 +20,7 @@ void rfmSetPower(int8_t powerLevel);
 uint8_t rmfGetOPMode();
 uint8_t rfmGetDataMode();
 
-// UNDER TEST:
-void rfmSetDeviationBurst(uint32_t deviation);
+
 
 
 /****************************************

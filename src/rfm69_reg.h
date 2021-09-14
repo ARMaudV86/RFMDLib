@@ -4,6 +4,8 @@
 
 #define ADDR_OP_MODE 7 
 
+#define RFM69_REG_FIFO				0x00
+
 #define RFM69_REG_OP_MODE           0x01
 #define RFM69_REG_DATA_MOD_MODE     0x02
 
