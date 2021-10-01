@@ -17,6 +17,12 @@ void rfmSetCarrierFrequency(uint32_t frequency);
 void rfmSetOCP(bool enable, uint8_t current);
 void rfmSetPower(int8_t powerLevel);
 
+bool rfmIsPacketSent(void);
+bool rfmIsPayloadReady(void);
+bool rfmIsCrcOK(void);
+
+
+
 /****************************************
  * void rfmSetOPMode(uint8_t mode);
  *
@@ -169,6 +175,25 @@ void rfmSetPower(int8_t powerLevel)
     }
 }
 
+
+/****************************************
+ * bool rfmIsPacketSent(void);
+ *
+ * Check the corresponding bit in the RFM module to know
+ * if the packet have been sent
+ * return true on packet sent
+ * 
+ ****************************************/
+bool rfmIsPacketSent(void)
+{
+	spiReadRegister();
+	
+}
+	
+
+
+bool rfmIsPayloadReady(void);
+bool rfmIsCrcOK(void);
 
 
 #endif
