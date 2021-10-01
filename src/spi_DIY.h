@@ -49,12 +49,12 @@ uint16_t spiFrame(bool Write, byte address, byte data)
 void spiSegmentationStart(void)
 {
       digitalWrite(slaveSelectPin, LOW);
-      delay(2*segmentationDelay);
+      delayMicroseconds(2*segmentationDelay);
 }
 
 void spiSegmentationEnd(void)
 {
-      delay(segmentationDelay);
+      delayMicroseconds(segmentationDelay);
       digitalWrite(slaveSelectPin, HIGH);
 }
 
