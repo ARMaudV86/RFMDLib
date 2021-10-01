@@ -18,12 +18,16 @@ void rfmSetOCP(bool enable, uint8_t current);
 void rfmSetPower(int8_t powerLevel);
 
 
+uint8_t rfmGetOPMode();
+uint8_t rfmGetDataMode();
+uint8_t rfmGetModulation();
+
+
 bool rfmIsPacketSent(void);
 bool rfmIsPayloadReady(void);
 bool rfmIsCrcOK(void);
 
-uint8_t rmfGetOPMode();
-uint8_t rfmGetDataMode();
+
 
 
 
@@ -54,9 +58,9 @@ void rfmSetOPMode(uint8_t mode)
  * Get the rfm operating mode and return it as defined in rfm69_def*
  * 
  ****************************************/
-uint8_t rmfGetOPMode()
+uint8_t rfmGetOPMode()
 {
-	return spiReadRegister(RFM69_REG_OP_MODE) & OP_MODE_MASK;
+	return spiReadRegister(RFM69_REG_OP_MODE) & OP_MODE_MSEL;
 }
 
 
@@ -81,7 +85,7 @@ void rfmSetDataMode(uint8_t dataMode)
  ****************************************/
 uint8_t rfmGetDataMode()
 {
-	return spiReadRegister(RFM69_REG_DATA_MOD_MODE) & DATA_MODE_MASK;
+	return spiReadRegister(RFM69_REG_DATA_MOD_MODE) & DATA_MODE_MSEL;
 }
 
 
@@ -229,14 +233,14 @@ void rfmSetPower(int8_t powerLevel)
 /****************************************
  * bool rfmIsPacketSent(void);
  *
- * Check the corresponding bit in the RFM module to know
+ * Check the corresponding bit in the RFM module to know :
  * if the packet have been sent
  * return true on packet sent
  * 
  ****************************************/
 bool rfmIsPacketSent(void)
 {
-	return (bool) ((spiReadRegister(RFM69_REG_IRQ2) & 0x04)>>2);	
+	return ((spiReadRegister(RFM69_REG_IRQ2) & 0x04) > 0);	
 }
 	
 
@@ -250,7 +254,7 @@ bool rfmIsPacketSent(void)
  ****************************************/
 bool rfmIsPayloadReady(void)
 {
-	return (bool) ((spiReadRegister(RFM69_REG_IRQ2) & 0x02)>>1);
+	return ((spiReadRegister(RFM69_REG_IRQ2) & 0x02) > 0);
 }
 
 
@@ -264,7 +268,7 @@ bool rfmIsPayloadReady(void)
  ****************************************/
 bool rfmIsCrcOK(void)
 {
-	return (bool) ((spiReadRegister(RFM69_REG_IRQ2) & 0x01));
+	return ((spiReadRegister(RFM69_REG_IRQ2) & 0x01) > 0);
 }
 
 

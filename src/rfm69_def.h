@@ -12,6 +12,8 @@
 
 //OP_MODE_REGISTER VALUES
     #define OP_MODE_MASK        0xE3
+	#define OP_MODE_MSEL		0x1C
+	
     #define OP_MODE_SLEEP       0x00
     #define OP_MODE_STDBY       0x04
     #define OP_MODE_FS          0x08
@@ -20,11 +22,13 @@
 
 //DATA_MODULATION_REGISTER
     #define DATA_MODE_MASK      0x9F
+	#define DATA_MODE_MSEL		0x60
     #define DATA_MODE_PCK       0x00
     #define DATA_MODE_CONT_WS   0x40    // Continuous Mode with bit synchronizer
     #define DATA_MODE_CONT      0x60
 
     #define MODULATION_MASK     0xE7
+	#define MODULATION_MSEL     0xE7
     #define MODULATION_FSK      0x00
     #define MODULATION_OOK      0x08
     // TODO MODULATION SHAPING
