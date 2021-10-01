@@ -20,6 +20,11 @@
 
 #define RFM69_REG_OCP               0x13
 
+#define RFM69_REG_IRQ2				0x28
+
+#define RFM69_REG_PYLD_LGHT			0x38
+#define RFM69_REG_FIFO_TRSH			0x3C
+
 #define RFM69_REG_PA1_MODE          0x5A
 #define RFM69_REG_PA2_MODE          0x5C
 

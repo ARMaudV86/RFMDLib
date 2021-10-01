@@ -222,6 +222,10 @@ void rfmSetPower(int8_t powerLevel)
 }
 
 
+
+
+
+
 /****************************************
  * bool rfmIsPacketSent(void);
  *
@@ -232,14 +236,36 @@ void rfmSetPower(int8_t powerLevel)
  ****************************************/
 bool rfmIsPacketSent(void)
 {
-	spiReadRegister();
-	
+	return (bool) ((spiReadRegister(RFM69_REG_IRQ2) & 0x04)>>2);	
 }
 	
 
+/****************************************
+ * bool rfmIsPayloadReady(void);
+ *
+ * Check the corresponding bit in the RFM module to know
+ * if the payload is ready
+ * return true on payload ready in fifo
+ * 
+ ****************************************/
+bool rfmIsPayloadReady(void)
+{
+	return (bool) ((spiReadRegister(RFM69_REG_IRQ2) & 0x02)>>1);
+}
 
-bool rfmIsPayloadReady(void);
-bool rfmIsCrcOK(void);
+
+/****************************************
+ * bool rfmIsCrcOK(void);
+ *
+ * Check the corresponding bit in the RFM module to know
+ * if the CRC is valid or not
+ * return true on crc valid
+ * 
+ ****************************************/
+bool rfmIsCrcOK(void)
+{
+	return (bool) ((spiReadRegister(RFM69_REG_IRQ2) & 0x01));
+}
 
 
 #endif
