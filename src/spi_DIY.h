@@ -13,7 +13,7 @@ uint16_t  spiFrame(bool Write, byte address, byte data);
 void spiSegmentationStart(void);
 void spiSegmentationEnd(void);
 void spiWriteRegister(uint8_t address, uint8_t data);
-
+void spiBurstWriteRegister(uint8_t address, void *data, size_t dataSize);
 uint8_t spiReadRegister(uint8_t address);
 
 

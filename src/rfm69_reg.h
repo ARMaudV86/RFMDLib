@@ -23,6 +23,7 @@
 #define RFM69_REG_IRQ2				0x28
 
 #define RFM69_REG_PYLD_LGHT			0x38
+#define RFM69_REG_AUTO_MODE			0x3B
 #define RFM69_REG_FIFO_TRSH			0x3C
 
 #define RFM69_REG_PA1_MODE          0x5A

@@ -19,15 +19,24 @@ spiFrame				KEYWORD2
 spiSegmentationStart	KEYWORD2
 spiSegmentationEnd		KEYWORD2
 spiWriteRegister		KEYWORD2
+spiBurstWriteRegister	KEYWORD2
 spiReadRegister			KEYWORD2
 
 rfmSetOPMode			KEYWORD2
 rfmSetDataMode			KEYWORD2
 rfmSetModulation		KEYWORD2
 rfmSetDeviation			KEYWORD2
-rfmSetCarrierFrequency		KEYWORD2
+rfmSetCarrierFrequency	KEYWORD2
 rfmSetOCP				KEYWORD2
 rfmSetPower				KEYWORD2
+
+rfmGetOPMode			KEYWORD2
+rfmGetDataMode			KEYWORD2
+rfmGetModulation		KEYWORD2
+
+rfmIsPacketSent			KEYWORD2
+rfmIsPayloadReady		KEYWORD2
+rfmIsCrcOK				KEYWORD2
 
 
 #######################################
