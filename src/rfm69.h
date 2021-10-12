@@ -27,8 +27,9 @@ bool rfmIsPacketSent(void);
 bool rfmIsPayloadReady(void);
 bool rfmIsCrcOK(void);
 
-
-
+// HARDWARE DEPENDANT FUNCTION START 
+void rfmPrintRegister(uint8_t reg);
+void rfmPrintRegisters(void);
 
 
 

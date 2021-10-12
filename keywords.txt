@@ -40,6 +40,14 @@ rfmIsCrcOK				KEYWORD2
 
 
 #######################################
+# Methods and Functions HARDWARE DEPENDANT
+#######################################
+
+void rfmPrintRegister(uint8_t reg);
+void rfmPrintRegisters(void);
+
+
+#######################################
 # Constants (LITERAL1)
 #######################################
 
