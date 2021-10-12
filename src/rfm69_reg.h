@@ -26,13 +26,17 @@
 #define RFM69_REG_AUTO_MODE			0x3B
 #define RFM69_REG_FIFO_TRSH			0x3C
 
+// NON CONTIGUOUS REGISTERS
+#define RFM69_REG_TEST_LNA			0x58
 #define RFM69_REG_PA1_MODE          0x5A
 #define RFM69_REG_PA2_MODE          0x5C
+#define RFM69_REG_TEST_DAGC			0x6F
+#define RFM69_REG_TEST_AFC			0x71
 
 
 
 
-
+// THE FUCK IS THAT ??????????????????????????????????????????
 #define RFM69B_ADDR_AGC2        0x6A
 #define RFM69B_ADDR_MODCNTL     0x71
 #define RFM69B_ADDR_FREQDEV     0x72

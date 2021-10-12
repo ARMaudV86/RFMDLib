@@ -228,8 +228,6 @@ void rfmSetPower(int8_t powerLevel)
 
 
 
-
-
 /****************************************
  * bool rfmIsPacketSent(void);
  *
@@ -271,5 +269,52 @@ bool rfmIsCrcOK(void)
 	return ((spiReadRegister(RFM69_REG_IRQ2) & 0x01) > 0);
 }
 
+
+/*******************************************************************************************************************
+ *
+ *
+ *									HARDWARE DEPENDANT SECTION
+ *
+ * 
+ ******************************************************************************************************************/
+
+
+
+/**************************************** WARNING HARDWARE DEPENDANT FUNCTION
+ * void rfmPrintRegister(uint8_t reg);
+ *
+ * Print the register specified in parameter
+ * 
+ ****************************************/
+void rfmPrintRegister(uint8_t reg)
+{
+    Serial.print(reg, HEX);
+    Serial.print(" ");
+    Serial.println(spiReadRegister(reg), HEX);
+}
+
+
+/**************************************** WARNING HARDWARE DEPENDANT FUNCTION
+ * void rfmPrintRegisters(void);
+ *
+ * The 's' is not silent
+ * This function will print all RFM69 registers
+ ****************************************/
+void rfmPrintRegisters(void)
+{
+	uint8_t i;
+	
+	for (i = 1; i < 0x50; i++)
+	{
+		rfmPrintRegister(i);
+	}
+	
+    // Non-contiguous registers
+    rfmPrintRegister(RFM69_REG_TEST_LNA);
+    rfmPrintRegister(RFM69_REG_PA1_MODE);
+    rfmPrintRegister(RFM69_REG_PA2_MODE);
+	rfmPrintRegister(RFM69_REG_TEST_DAGC);
+	rfmPrintRegister(RFM69_REG_TEST_AFC);	
+}
 
 #endif
