@@ -16,6 +16,7 @@ void rfmSetDeviation(uint32_t deviation);
 void rfmSetCarrierFrequency(uint32_t frequency);
 void rfmSetOCP(bool enable, uint8_t current);
 void rfmSetPower(int8_t powerLevel);
+void rfmSetBR(uint16_t bitRate);
 
 
 uint8_t rfmGetOPMode();
