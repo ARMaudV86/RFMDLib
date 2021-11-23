@@ -227,6 +227,18 @@ void rfmSetPower(int8_t powerLevel)
 }
 
 
+/****************************************
+ * void rfmSetBR(uint16_t bitRate);
+ *
+ * set the 0x03 and 0x04 bitrate register to the corresponding 
+ * value defined in rfm69_def.h
+ * 
+ ****************************************/
+void rfmSetBR(uint16_t bitRate)
+{
+	spiWriteRegister(RFM69_REG_BITRATE_MSB, (uint8_t)(bitRate >> 8));
+	spiWriteRegister(RFM69_REG_BITRATE_LSB, (uint8_t)bitRate);
+}
 
 
 /****************************************

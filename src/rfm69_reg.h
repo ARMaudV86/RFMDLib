@@ -8,7 +8,8 @@
 
 #define RFM69_REG_OP_MODE           0x01
 #define RFM69_REG_DATA_MOD_MODE     0x02
-
+#define RFM69_REG_BITRATE_MSB		0x03
+#define RFM69_REG_BITRATE_LSB		0x04
 #define RFM69_REG_FDEV_MSB          0x05
 #define RFM69_REG_FDEV_LSB          0x06
 
@@ -25,6 +26,7 @@
 #define RFM69_REG_PYLD_LGHT			0x38
 #define RFM69_REG_AUTO_MODE			0x3B
 #define RFM69_REG_FIFO_TRSH			0x3C
+
 
 // NON CONTIGUOUS REGISTERS
 #define RFM69_REG_TEST_LNA			0x58
