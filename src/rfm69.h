@@ -17,6 +17,7 @@ void rfmSetCarrierFrequency(uint32_t frequency);
 void rfmSetOCP(bool enable, uint8_t current);
 void rfmSetPower(int8_t powerLevel);
 void rfmSetBR(uint16_t bitRate);
+void rfmSetFilter(uint8_t filterRxBw, uint8_t filterDCC);
 
 
 uint8_t rfmGetOPMode();
@@ -239,6 +240,20 @@ void rfmSetBR(uint16_t bitRate)
 {
 	spiWriteRegister(RFM69_REG_BITRATE_MSB, (uint8_t)(bitRate >> 8));
 	spiWriteRegister(RFM69_REG_BITRATE_LSB, (uint8_t)bitRate);
+}
+
+
+/****************************************
+ * void rfmSetFilter(uint8_t filterRxBw, uint8_t filterDCC);
+ *
+ * Set RxBw filter and DC cancellation according to the values defined
+ * in rfm69_def.h
+ *
+ ****************************************/
+void rfmSetFilter(uint8_t filterRxBw, uint8_t filterDCC)
+{
+	uint8_t data[2] = {(filterRxBw | filterDCC), (filterRxBw | filterDCC)};
+	spiBurstWriteRegister(RFM69_REG_RX_FILTER, data , 2);
 }
 
 

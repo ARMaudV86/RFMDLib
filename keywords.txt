@@ -30,6 +30,7 @@ rfmSetCarrierFrequency	KEYWORD2
 rfmSetOCP				KEYWORD2
 rfmSetPower				KEYWORD2
 rfmSetBR				KEYWORD2
+rfmSetFilter			KEYWORD2
 
 rfmGetOPMode			KEYWORD2
 rfmGetDataMode			KEYWORD2

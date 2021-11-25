@@ -12,7 +12,6 @@
 #define RFM69_REG_BITRATE_LSB		0x04
 #define RFM69_REG_FDEV_MSB          0x05
 #define RFM69_REG_FDEV_LSB          0x06
-
 #define RFM69_REG_CARR_FREQ_MSB     0x07
 #define RFM69_REG_CARR_FREQ_MID     0x08
 #define RFM69_REG_CARR_FREQ_LSB     0x09
@@ -20,6 +19,9 @@
 #define RFM_69_REG_PA_LEVEL         0x11
 
 #define RFM69_REG_OCP               0x13
+
+#define RFM69_REG_RX_FILTER			0x19
+#define RFM69_REG_AFC_FILTER		0x1A
 
 #define RFM69_REG_IRQ2				0x28
 
@@ -38,13 +40,9 @@
 
 
 
-// THE FUCK IS THAT ??????????????????????????????????????????
-#define RFM69B_ADDR_AGC2        0x6A
-#define RFM69B_ADDR_MODCNTL     0x71
-#define RFM69B_ADDR_FREQDEV     0x72
-#define RFM69B_ADDR_BANDSEL     0x75
-#define RFM69B_ADDR_CARRFREQ1   0x76
-#define RFM69B_ADDR_CARRFREQ0   0x77
+
+
+
 
 
 #endif _RFM69_REG_H
